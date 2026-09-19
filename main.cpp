@@ -1,18 +1,42 @@
 #include <iostream>
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+class Point
+{
+private:
+    int x;
+    int y;
 
-int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the <b>lang</b> variable name to see how CLion can help you rename it.
-
-    const auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
-
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
+public:
+    int getX() {
+        return x;
     }
+    int getY() {
+        return y;
+    }
+    void setX(int value);
+    void setY(int value);
+    void print();
+
+};
+void Point::setX(int value)
+{
+    x = value;
+}
+void Point::setY(int value) {
+    y = value;
+}
+void Point::print() {
+    std::cout <<"Point: " << "x = " << x << " y = " << y << std::endl;
+}
+
+int main()
+{
+    Point point;
+    point.setX(10);
+    point.setY(20);
+    point.print();
+    std::cout << point.getX() << std::endl;
+    std::cout << point.getY() << std::endl;
 
     return 0;
-    // TIP See CLion help at <a href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>. Also, you can try interactive lessons for CLion by selecting 'Help | Learn IDE Features' from the main menu.
 }
