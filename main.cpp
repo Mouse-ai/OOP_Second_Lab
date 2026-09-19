@@ -47,6 +47,31 @@ void Point::print() {
     std::cout <<"Point: " << "x = " << x << " y = " << y << std::endl;
 }
 
+
+class Point3D : public Point
+{
+private:
+    int z;
+
+public:
+    Point3D(int xValue, int yValue, int zValue) : Point(xValue,yValue), z(zValue) {
+        std::cout << "Constructor initialization Point3D" << std::endl;
+
+    }
+    Point3D(const Point3D &other):Point(other), z(other.z) {
+        std::cout << "Copy constructor Point3D" << std::endl;
+    }
+    void print()
+    {
+        Point::print();
+        std::cout << " z = " << z << std::endl;
+    }
+    ~Point3D()
+    {
+        std::cout << "Destructor: x = " << getX() << " y = " << getY()<<" z = " << z << std::endl;
+    }
+};
+
 int main()
 {
     Point *point = new Point();
@@ -62,5 +87,11 @@ int main()
     delete point;
     delete point2;
     delete point3;
+
+    Point3D point3D(10, 20, 30);
+    point3D.print();
+    Point3D *point3D2 = new Point3D(point3D);
+    point3D2->print();
+    delete point3D2;
     return 0;
 }
