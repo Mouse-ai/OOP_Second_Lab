@@ -71,6 +71,52 @@ public:
         std::cout << "Destructor: x = " << getX() << " y = " << getY()<<" z = " << z << std::endl;
     }
 };
+class Circle
+{
+private:
+    Point center;
+    int radius;
+
+public:
+    Circle(int x, int y, int radiusValue)
+    : center(x, y), radius(radiusValue)
+    {
+        std::cout << "Circle constructor" << std::endl;
+    }
+    void print() {
+        std::cout << "Circle" << std::endl;
+        center.print();
+        std::cout << "radius = " << radius << std::endl;
+    }
+    ~Circle()
+    {
+        std::cout << "Circle destructor" << std::endl;
+    }
+};
+class DynamicCircle
+{
+private:
+    Point *center;
+    int radius;
+
+public:
+    DynamicCircle(int x, int y, int radiusValue)
+    : radius(radiusValue)
+    {
+        center = new Point(x,y);
+
+        std::cout << "DynamicCircle constructor" << std::endl;
+    }
+    void print() {
+        std::cout << "Circle" << std::endl;
+        center->print();
+        std::cout << "radius = " << radius << std::endl;
+    }
+    ~DynamicCircle() {
+        std::cout << "DynamicCircle destructor" << std::endl;
+        delete center;
+    }
+};
 
 int main()
 {
@@ -136,5 +182,14 @@ int main()
     delete p1;
     p1 = nullptr;
     p2 = nullptr;
+    {
+        Circle circle(10, 20, 5);
+        circle.print();
+    }
+    {
+        DynamicCircle circle(30, 40, 8);
+        circle.print();
+    }
+
     return 0;
 }
