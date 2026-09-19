@@ -52,6 +52,10 @@ int main()
     Point *point = new Point();
     Point *point2 = new Point(10,20);
     Point *point3 = new Point(*point);
+    {
+        Point staticPoint(5, 7);
+        staticPoint.print();
+    }
     point->print();
     point2->print();
     point3->print();
