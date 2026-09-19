@@ -89,9 +89,52 @@ int main()
     delete point3;
 
     Point3D point3D(10, 20, 30);
+    Point *basePointer = &point3D;
+
+    std::cout << "Point3D object:" << std::endl;
     point3D.print();
+
+    std::cout << "Point pointer:" << std::endl;
+    basePointer->print();
     Point3D *point3D2 = new Point3D(point3D);
+    Point *dynamicBasePointer = point3D2;
     point3D2->print();
+    std::cout << "dinamicBasePointer:" << std::endl;
+    dynamicBasePointer->print();
+    Point slicedPoint = point3D;
+    slicedPoint.print();
     delete point3D2;
+
+
+
+    Point a(1, 2);
+    Point b(50, 60);
+
+    b = a;
+
+    std::cout << "a:" << std::endl;
+    a.print();
+
+    std::cout << "b:" << std::endl;
+    b.print();
+    a.setX(100);
+
+    a.print();
+    b.print();
+
+
+    Point *p1 = new Point(1, 2);
+    Point *p2 = p1;
+
+    p1->print();
+    p2->print();
+
+    p1->setX(100);
+
+    p1->print();
+    p2->print();
+    delete p1;
+    p1 = nullptr;
+    p2 = nullptr;
     return 0;
 }
